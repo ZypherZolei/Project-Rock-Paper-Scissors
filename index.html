@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+    let humanScore = 0;
+    let computerScore = 0;
+
+    playGame();
+
+    function playGame(){
+        for(let i = 0; i <5; i++){
+            playRound();
+        }
+    }
+
+
+    function playRound(){
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        if(humanChoice > computerChoice){
+            humanScore++;
+            alert("You win!");
+        }
+        else if(humanChoice < computerChoice){
+            computerScore++;
+            alert("You lose!");
+        }
+        else if(humanChoice == computerChoice){
+            alert("It's a tie!");
+        }
+
+        alert("Score \n Computer:"+computerScore+"\n Your score:"+humanScore);
+    }
+
+
+
+    function getComputerChoice(){
+        let min = 1;
+        let max = 4;
+
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(max);
+        
+        let results = Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+        console.log("COmputer chpice "+results);
+
+        return results;
+    }
+
+    function getHumanChoice(){
+        let answer = prompt("Rock paper or scissors");
+
+        answer.toLowerCase();
+
+        switch (answer) {
+            case "rock":
+                return 1;
+                break;
+            case "paper":
+                return 2;
+                break;
+            case "scissors":
+                return 3;
+                break;
+        
+            default:
+                alert("Make sure your spelling is correct");
+                break;
+        }
+    }
+</script>
+<body>
+
+</body>
+
+</html>
